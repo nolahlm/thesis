@@ -1,0 +1,60 @@
+\documentclass[11pt]{report}
+% Packages (Easier to list here than to use mystyle.sty)
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage[margin=1.05in]{geometry}
+
+\usepackage{amsmath} % math stuff
+\usepackage[version=4]{mhchem} % Chem. equations
+\usepackage{siunitx} % SI units
+\DeclareSIUnit\torr{torr}
+\sisetup{range-phrase=-}
+\sisetup{range-units=single}
+
+\usepackage{miller} % for formatting miller indices
+
+\usepackage{caption} % Captions have smaller margins
+\usepackage{subcaption} % for subfigures, e.g. a and b
+\usepackage{booktabs} % prettier tables
+\usepackage{setspace} % for double spacing
+\usepackage{kpfonts} % nice font
+
+\usepackage[hidelinks]{hyperref} % Add clickable TOC, and clickable equation refs
+\usepackage{tocloft}
+\setlength\cftaftertoctitleskip{5pt}
+
+% Once I have a .bib, uncomment this
+\usepackage[backend=bibtex,style=nature,url=false,doi=false,isbn=false, intitle=true, articletitle=false, eprint=false]{biblatex}
+\usepackage{breakcites} % Allows citation to break into lines in bibliography
+% Select the bibliography file.  I don't care at months and days
+\bibliography{MS_thesis.bib}
+\AtEveryBibitem{\clearfield{month}}
+\AtEveryBibitem{\clearfield{day}}
+
+%% Change the tableofcontents title
+\renewcommand{\contentsname}{Table of Contents}
+\hyphenation{super-exchange}
+
+%% Macros
+% Make vectors bold instead of arrows
+\let\vec\mathbf
+
+\begin{document}
+\pagenumbering{roman} 
+    \include{frontmatter/titlepage}
+    \include{frontmatter/abstract}
+    \newpage
+    \tableofcontents
+    \newpage
+\newpage 
+\doublespacing
+\pagenumbering{arabic} 
+    \include{chapters/introduction}
+    \include{chapters/techniques}
+    \include{chapters/results1}
+    \include{chapters/results2}
+    \include{chapters/conclusion}
+    \clearpage
+\singlespacing
+\printbibliography[heading=bibintoc, title=References]
+\end{document}
